@@ -8,14 +8,12 @@ export default function App() {
 
   const handleFormSubmit = (newInput) => {
     setInputValue(newInput);
-    const newInput2 = newInput;
-    return newInput2;
   };
 
   return (
     <div className="App">
-      <Searchbar />
-      {/* <ImageGallery inputValueProps={inputValue} hm={handleFormSubmit} /> */}
+      <Searchbar onSubmit={handleFormSubmit} />
+      <ImageGallery inputValueProps={inputValue} />
     </div>
   );
 }
