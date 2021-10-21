@@ -1,10 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { ImSearch } from "react-icons/im";
 import { fetchPictures } from "../../Servise/picturesApi";
-
-const baseApi = "https://pixabay.com/api/";
-const myApiKey = "22969021-19f1494240440c9eacf690dfa";
 
 export default function SearchBar({ onSubmit }) {
   const [inputValue, setInputValue] = useState("");
@@ -22,7 +19,8 @@ export default function SearchBar({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchPictures(inputValue, baseApi, myApiKey, page)
+
+    fetchPictures(inputValue, page)
       .then((picturesResponseArr) => {
         // console.log(pictures);
         if (picturesResponseArr.length === 0) {
@@ -48,6 +46,16 @@ export default function SearchBar({ onSubmit }) {
     //   pictures: [...this.state.pictures, ...newArr],
     // });
   };
+
+  useEffect(() => {
+    console.log("use");
+    if (inputValue === "") {
+      console.log("lol");
+      return;
+    }
+    // handleSubmit(e);
+    console.log("why");
+  }, [inputValue]);
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -103,7 +111,7 @@ export default function SearchBar({ onSubmit }) {
             autoFocus
             placeholder="Search images and photos"
             value={inputValue}
-            onChange={handleValueChange}
+            // onChange={handleValueChange}
           />
         </form>
       </header>
