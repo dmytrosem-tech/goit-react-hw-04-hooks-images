@@ -1,4 +1,4 @@
-import { Children, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { fetchPictures } from "../../Servise/picturesApi";
 import Button from "../Button/Button";
@@ -19,6 +19,7 @@ export default function ImageGallery({ inputValueProps }) {
   const [largeURL, setLargeURL] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [status, setStatus] = useState(Status.IDLE);
+  console.log(largeURL);
 
   useEffect(() => {
     if (!inputValueProps) {
@@ -65,15 +66,11 @@ export default function ImageGallery({ inputValueProps }) {
 
   const toggleModal = () => {
     setShowModal(!showModal);
-    // this.setState(({ showModal }) => ({
-    //   showModal: !showModal,
-    // }));
   };
 
   const takeModalPicture = (url) => {
     setLargeURL(url);
     setShowModal(true);
-    // this.setState({ largeUrl: url, showModal: true });
   };
 
   if (status === Status.IDLE) {
