@@ -15,25 +15,27 @@ const Status = {
 
 export default function ImageGallery({ inputValueProps }) {
   const [page, setPage] = useState(1);
+  const [newPage] = useState(1);
   const [pictures, setPictures] = useState([]);
   const [largeURL, setLargeURL] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [status, setStatus] = useState(Status.IDLE);
   console.log(largeURL);
-
+  console.log(newPage);
   useEffect(() => {
     if (!inputValueProps) {
       return;
     }
     setStatus(Status.PENDING);
     setPage(1);
-    fetchPictures(inputValueProps, page)
+    fetchPictures(inputValueProps, newPage)
       .then((picturesResponseArr) => {
         if (picturesResponseArr.length === 0) {
           return setStatus(Status.REJECTED);
         }
         setPictures(picturesResponseArr);
       })
+
       .then(setStatus(Status.RESOLVED))
       .catch((e) => setStatus(Status.REJECTED));
   }, [inputValueProps]);

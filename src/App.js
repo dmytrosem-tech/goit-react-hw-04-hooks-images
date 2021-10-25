@@ -4,6 +4,7 @@ import ImageGallery from "./Components/ImageGallery";
 
 export default function App() {
   const [inputValue, setInputValue] = useState("");
+
   // const [loading, setLoading] = useState(false);
 
   const handleFormSubmit = (newInput) => {
@@ -17,23 +18,3 @@ export default function App() {
     </div>
   );
 }
-
-// export default class App extends Component {
-//   state = {
-//     loading: false,
-//     inputValue: "",
-//   };
-
-//   handleFormSubmit = (inputValue) => {
-//     this.setState({ inputValue });
-//   };
-
-//   render() {
-//     return (
-//       <div className="App">
-//         <Searchbar onSubmit={this.handleFormSubmit} />
-//         <ImageGallery inputValue={this.state.inputValue} />
-//       </div>
-//     );
-//   }
-// }

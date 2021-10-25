@@ -16,6 +16,7 @@ export default function SearchBar({ onSubmit }) {
       return;
     }
     onSubmit(inputValue);
+
     setInputValue("");
   };
 
